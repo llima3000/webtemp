@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Script to receive syslog message containing Json Paylod wiht temp data and write it on dynamodb
 # 
@@ -34,7 +34,7 @@ def parse_syslog(line):
         line = fields[-1]
     return line
 
-# arn:aws:dynamodb:us-east-2:501205572558:table/temp
+# Function to push data to dynamoDB
 def put_temp(data, dynamodb=None):
     try:
         if not dynamodb:

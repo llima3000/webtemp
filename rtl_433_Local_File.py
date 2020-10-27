@@ -1,11 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
-# Script to receive syslog message containing Json Paylod wiht temp data and write it on dynamodb
-# 
-# Start rtl_433:
-#       rtl_433 -C si -F syslog:127.0.0.1:1433
-# then start this script
-
 from __future__ import print_function
 
 import socket

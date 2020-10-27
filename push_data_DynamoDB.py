@@ -1,10 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
-# Script to receive syslog message containing Json Paylod wiht temp data and write it on dynamodb
-# 
-# Start rtl_433:
-#       rtl_433 -C si -F syslog:127.0.0.1:1433
-# then start this script
+# Script to read json data from files and push to a dynamodb table
+# delete the file if the push was ok
 
 from __future__ import print_function
 
@@ -15,7 +12,7 @@ import time
 import datetime
 import os
 
-# arn:aws:dynamodb:us-east-2:501205572558:table/temp
+# Function to push data to a dynamoDB table
 def put_temp(data, dynamodb=None):
     try:
         if not dynamodb:
@@ -29,6 +26,7 @@ def put_temp(data, dynamodb=None):
 
     return response
 
+# Function to loop in each 60 seconds to get new reading and push to a dynamodb
 def PushData(path):
     while True:
         time.sleep(60)
