@@ -54,8 +54,4 @@ def PushData(path):
 
 if __name__ == "__main__":
     path = "./tempread/"
-    try:
-        os.mkdir(path)
-    except:
-        pass
     PushData(path)

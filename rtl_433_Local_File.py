@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import socket
 import json
+import os
 
 UDP_IP = "0.0.0.0"
 UDP_PORT = 1433
@@ -78,4 +79,8 @@ def rtl_433_listen():
 
 
 if __name__ == "__main__":
+    try:
+        os.mkdir(path)
+    except:
+        pass
     rtl_433_listen()

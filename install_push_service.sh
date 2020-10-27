@@ -1,5 +1,8 @@
 #!/bin/sh
 mkdir /opt/temp_dynamodb
+chmod 775 -R /opt/temp_dynamodb
+chown -R nobody /opt/temp_dynamodb
+
 cp rtl_433_Local_File.py /opt/temp_dynamodb
 cp push_data_DynamoDB.py /opt/temp_dynamodb
 
