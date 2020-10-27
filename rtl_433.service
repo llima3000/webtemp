@@ -1,0 +1,14 @@
+[Unit]
+Description=rtl_433_syslog
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/rtl_433 -C si -F syslog:tempreceptor:1433
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

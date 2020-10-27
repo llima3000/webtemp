@@ -1,0 +1,14 @@
+[Unit]
+Description=Temperature to DynamoDB
+After=network.target
+
+[Service]
+ExecStart=/opt/temp_dynamodb/rtl_433_DynamoDB.py
+WorkingDirectory=/opt/temp_dynamodb
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=nobody
+
+[Install]
+WantedBy=multi-user.target

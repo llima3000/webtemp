@@ -53,4 +53,6 @@ def PushData(path):
         print("End processing\n")
 
 if __name__ == "__main__":
-    PushData("./tempread/")
+    path = "./tempread/"
+    os.mkdir(path)
+    PushData(path)
