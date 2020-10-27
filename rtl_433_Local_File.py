@@ -28,7 +28,7 @@ def parse_syslog(line):
         line = fields[-1]
     return line
 
-def rtl_433_listen():
+def rtl_433_listen(path):
     """Try to extract the payload from a syslog line."""
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((UDP_IP, UDP_PORT))
@@ -63,7 +63,7 @@ def rtl_433_listen():
 
                 # write the info into one file
                 filename = payload["transmitter"] + "-" + payload["time"].replace(":","-").replace(" ","-") + ".json"
-                f = open("./tempread/" + filename, "w")
+                f = open(path + filename, "w")
                 f.write(json.dumps(payload))
                 f.close()
                 print(filename)
@@ -79,8 +79,9 @@ def rtl_433_listen():
 
 
 if __name__ == "__main__":
+    path = "./tempread/"
     try:
         os.mkdir(path)
     except:
         pass
-    rtl_433_listen()
+    rtl_433_listen(path)
