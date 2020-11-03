@@ -28,10 +28,10 @@ def put_temp(data, dynamodb=None):
 
 # Function to loop in each 60 seconds to get new reading and push to a dynamodb
 def PushData(path):
+    print("Starting")
     while True:
         time.sleep(60)
-        print(datetime.datetime.now())
-        print("Processing files in: " + path)
+        output = "Start Processing " + str(datetime.datetime.now()) + "\n"
 
         for filename in filter(lambda x: x.endswith('.json'), os.listdir(path)):
             f = open(path + filename, "r")
@@ -39,18 +39,19 @@ def PushData(path):
                 payload = json.loads(f.read())
             except:
                 payload = None
-                print("Bad content in  file " + filename)
+                output = output + "Bad content in file " + filename + "\n"
                 os.rename(path + filename, path + filename + ".err")
             f.close()
 
             if payload is not None:
                 dynameDBResp = put_temp(payload)
                 if dynameDBResp['ResponseMetadata']['HTTPStatusCode'] == 200:
-                    print(payload)
+                    output = output + json.dumps(payload) + "\n"
                     os.remove(path + filename)
                 else:
-                    print(dynameDBResp)
-        print("End processing\n")
+                    output = output + str(ynameDBResp) + "\n"
+        output = output + "End processing " + str(datetime.datetime.now()) + "\n"
+        print(output)
 
 if __name__ == "__main__":
     path = "./tempread/"
