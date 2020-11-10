@@ -3,7 +3,7 @@ Description=Temperature to DynamoDB
 After=network.target
 
 [Service]
-ExecStart=/opt/temp_dynamodb/rtl_433_Local_File.py
+ExecStart=/opt/temp_dynamodb/push_data_MongoDB.py
 WorkingDirectory=/opt/temp_dynamodb
 StandardOutput=inherit
 StandardError=inherit

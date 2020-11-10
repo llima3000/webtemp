@@ -8,7 +8,7 @@ WorkingDirectory=/opt/temp_dynamodb
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=webtemp
+User=root
 
 [Install]
 WantedBy=multi-user.target
