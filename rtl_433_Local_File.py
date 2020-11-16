@@ -55,6 +55,7 @@ def rtl_433_listen(path):
                             "model": data["model"],
                             "transmitter": transmitter,
                             "time": data["time"],
+                            "location": { "type": "Point", "coordinates": [51.399257,-0.2399796] },
                             "temperature_C": int(data["temperature_C"]*100)
                           }
                 if "humidity" in data:
